@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        
+
       - name: Install Doxygen
         uses: ssciwr/doxygen-install@v1
 
@@ -67,3 +67,11 @@ jobs:
       - name: Compile
         shell: bash
         run: cmake --build ./build --target Yoomoney
+
+      - name: Documentation
+        shell: bash
+        run: sudo cmake --build ./build --target documentation
+
+      - name: Install
+        shell: bash
+        run: sudo cmake --build ./build --target install
