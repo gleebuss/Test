@@ -37,7 +37,7 @@ jobs:
       - name: Install vcpkg packages
         shell: bash
         run: |
-          vcpkg install $(cat vcpkg.txt)
+          vcpkg install cpr
           vcpkg integrate install
 
       - name: Configure
