@@ -33,7 +33,7 @@ set(DEP_DIR "API/include/dependencies")
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${SOURCE_DIR}/*.cpp")
 include(GNUInstallDirs)
 
-find_package(Doxygen REQUIRED)
+# find_package(Doxygen REQUIRED)
 find_package(cpr REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCES})
@@ -47,16 +47,16 @@ target_link_libraries(${PROJECT_NAME} PUBLIC cpr::cpr)
 
 # add_subdirectory(examples)
 
-if(DOXYGEN_FOUND)
-    set(DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
-    add_custom_target(
-            documentation
-            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-            COMMENT "Generating API documentation with Doxygen"
-            VERBATIM
-    )
-endif()
+# if(DOXYGEN_FOUND)
+#     set(DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+#     add_custom_target(
+#             documentation
+#             COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
+#             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#             COMMENT "Generating API documentation with Doxygen"
+#             VERBATIM
+#     )
+# endif()
 
 install(TARGETS ${PROJECT_NAME} EXPORT YoomoneyConfig
         ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
