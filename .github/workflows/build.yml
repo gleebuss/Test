@@ -70,8 +70,8 @@ jobs:
 
       - name: Documentation
         shell: bash
-        run: sudo cmake --build ./build --target documentation
+        run: cmake --build ./build --target documentation
 
       - name: Install
         shell: bash
-        run: sudo cmake --build ./build --target install
+        run: cmake --build ./build --target install
