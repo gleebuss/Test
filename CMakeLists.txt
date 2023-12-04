@@ -42,7 +42,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME} PUBLIC cpr::cpr)
 
-add_subdirectory(examples)
+# add_subdirectory(examples)
 
 if(DOXYGEN_FOUND)
     set(DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
