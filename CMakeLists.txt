@@ -23,17 +23,14 @@ endif()
 cmake_minimum_required(VERSION 3.21)
 project(Yoomoney)
 
-#message(FATAL_ERROR ${CMAKE_TOOLCHAIN_FILE})
-#C:/Users/-_-/vcpkg/scripts/buildsystems/vcpkg.cmake
 set(CMAKE_CXX_STANDARD 17)
-# set(BUILD_SHARED_LIBS ON)
 set(SOURCE_DIR "API/src")
 set(INCLUDE_DIR "API/include")
 set(DEP_DIR "API/include/dependencies")
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${SOURCE_DIR}/*.cpp")
 include(GNUInstallDirs)
 
-# find_package(Doxygen REQUIRED)
+find_package(Doxygen REQUIRED)
 find_package(cpr REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCES})
@@ -45,18 +42,18 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME} PUBLIC cpr::cpr)
 
-# add_subdirectory(examples)
+add_subdirectory(examples)
 
-# if(DOXYGEN_FOUND)
-#     set(DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
-#     add_custom_target(
-#             documentation
-#             COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
-#             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-#             COMMENT "Generating API documentation with Doxygen"
-#             VERBATIM
-#     )
-# endif()
+if(DOXYGEN_FOUND)
+    set(DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+    add_custom_target(
+            documentation
+            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM
+    )
+endif()
 
 install(TARGETS ${PROJECT_NAME} EXPORT YoomoneyConfig
         ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
