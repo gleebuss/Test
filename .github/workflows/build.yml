@@ -78,5 +78,5 @@ jobs:
           if [ "$RUNNER_OS" == "Windows" ]; then
           cmake --build ./build --target install
             else
-            cmake --build ./build --target install
+            sudo cmake --build ./build --target install
             fi
